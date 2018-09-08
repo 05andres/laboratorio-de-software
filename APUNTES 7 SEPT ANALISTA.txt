@@ -1,0 +1,36 @@
+obj de las 4 semanas del spritn
+
+ los del 1 sprint
+
+plantilla excel semana a seman, la pla del spritn el scrum master lo hace, segurda una copia cada semana.
+trazabilidad dsde lo q se ha hecho. en la reunion de scrum se modifica, y se diligencia, el equipo miro lo  q esta pendiente
+
+tarea: actividades q corresponden al desarrollo de sw.
+	Tareas gestion: reuniones, revidsar doc, si hay cpacitaciones,
+	tareas: de analisis y el orden a desarrollar,1 requisitos,2 diagrma casos de usu, luego especificacion de los casos de uso
+	y diseño de mockups. ..		
+	seguimiento reunion del scrum
+	El análisis consta..
+	cada tarea viene cin un id, 
+
+Id anteecesor ..tarea 1 es el digramad e casos de uso tonces el antecesor es el 8.
+
+Prioridad con nombre propia del repsonsable.
+
+recursos:
+sw 
+
+entregable: doc q es lo q debe quedar de la tarea.
+
+Estados, ..primeor en el acta del scrum queda llo q alguien no acabo.
+estado niciamlemnte espan emn pendiente luego se va cambiando. en rojo las atrazads.
+
+esfuerzo en horas de cada una de las tareas.
+los planes cambian depende de las... segunda version del proyecto v2. que quede la trazabilidad, si el tiempo calculado es bueno o no.
+
+avance, para cada semana se miran ncomo van las actv, y se sumasn los tiempos.
+	
+
+
+
+
