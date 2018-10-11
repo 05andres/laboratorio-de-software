@@ -11,7 +11,7 @@ class Videojuegos(models.Model):
     sinopsis = models.TextField(default='',verbose_name="Ingrese una breve sinopsis del Videojuego")
     categoria = models.CharField(max_length = 200,verbose_name="Categoria")
     FechaLanzamiento= models.DateField( verbose_name="Año de lanzamiento")
-    image = models.ImageField(verbose_name="Imagen", upload_to ="image_juegos")
+    image = models.ImageField(verbose_name="Imagen", upload_to ="image_juegos", height_field=None, width_field=None)
     duracionPromedio = models.CharField(max_length = 200,verbose_name="Duracion Promedio del videojuego")
     created = models.DateTimeField(auto_now_add=True,verbose_name="Fecha de creación",blank=True,null=True)
 
