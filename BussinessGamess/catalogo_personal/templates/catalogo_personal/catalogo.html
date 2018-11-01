@@ -1,19 +1,102 @@
 {% extends 'core/base.html' %} {% block title %}Catalogo{% endblock %} {% block background %} {% load static %} {% endblock %} {% block headers %} {% endblock %} {% block content %}
-<div class="container">
-    <div style="padding-top:50px; text-align:center;">
-        <h1>{{title}}</h1>
-    </div>
-</div>{% for Videojuegos in catalogo %}
+<html>
 
-<!-- Proyecto -->
-<div class="row project">
-    <div class="col-lg-3 col-md-4 offset-lg-1">
-        <img class="img-fluid" src="{{Videojuegos.image.url}}" alt="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie-edge">
+    <link rel="stylesheet" type="text/css" href="{% static 'shasa/css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'and/css/main.css' %}">
+    <style type="text/css"></style>
+    <style>
+        .conten-imagen {
+            display: block;
+            border: solid 3px #000;
+            background: #f2f2f2;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <!--############## Empieza el contenido ###############-->
+
+    <!--
+<div class="container"> // coloca texto dependiendo de la columna tam=12
+
+	<div class="row">
+
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-12"> <p>Agregar Videojuego</p>  </div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 border"> <p>Titulo de Videojuego</p>  </div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3 border"> <p>Categoria</p>  </div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-12 border"> <p>Duracion Promedio</p>  </div>
+		<div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-12 border"> <p>Breve sinopsis del video juego</p>  </div>
+
+
+	</div>
+
+</div> -->
+
+
+    <div class="container ">
+
+        <br><span class="login100-form-title p-b-70">
+            CATALOGO PERSONAL
+        </span> {% for Videojuegos in catalogo %}
+        <div class="container">
+            <div class="row justify-content-center my-5 py-2 no-gutters">
+                <div class=" col-sm-3 col-md-3 border border-primary rounded solid-3 align-self-center">
+                    <img class="img-fluid " src="{{Videojuegos.image.url}}" alt="">
+                </div>
+
+                <div class="form-group col-6">
+                    <form>
+
+                        <div class="row  justify-content-center mr-5 pr-5 ">
+                            <div class="col-md-12 ">
+                                <form>
+                                    <div class="form-group">
+                                        <p class="form-control ml-2">{{Videojuegos.title}}</p>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="row  justify-content-center mr-5 pr-5 ">
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="form-group">
+                                        <p class="form-control ml-2">{{Videojuegos.categoria}}</p>
+                                    </div>
+                            </div>
+                        </div>
+
+                        <div class="row  justify-content-center mr-5 pr-5 ">
+                            <div class="col-md-12">
+                                <form>
+                                    <div class="form-group">
+                                        <textarea disabled class="form-control ml-2" rows="3">{{Videojuegos.sinopsis}}</textarea>
+                                    </div>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %} {% endblock %}
     </div>
-    <div class="col-lg-7 col-md-8">
-        <h2 class="section-heading title">{{Videojuegos.title}}</h2>
-        <p>{{Videojuegos.sinopsis}}</p>
-        <p>{{Videojuegos.categoria}}</p>
-    </div>
-</div>
-{% endfor %} {% endblock %}
+
+
+
+
+
+
+
+
+
+    <!--############## Finaliza el contenido ###############-->
+    <script src="{% static 'shasa/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script src="{% static 'shasa/js/popper.min.js' %}"></script>
+    <script src="{% static 'shasa/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>

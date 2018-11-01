@@ -14,52 +14,53 @@
     <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
     <link href="{% static 'core/css/estilos.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'core/css/estilo2.css' %}">
 </head>
 
-<body>
 
-    <body>
-        <!-- Navegación -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container">
-                <a class="navbar-brand" href="{% url 'home' %}">BussinesGames</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
+<body>
+    <!-- Navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'home' %}">BusinessGames</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
-                <div class="collapse navbar-collapse" id="ned">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-                        </li>
-                    </ul>
-                    <ul class="menu">
-                        {% if not request.user.is_authenticated %}
-                        <li><a href="{% url 'login' %}">Inicio sesion</a></li>
-                        <li><a href="{% url 'registro' %}">Registro</a></li>
-                        {% else %}
-                        <li><a href="#">{{ user.username }}</a>
-                            <ul class="submenu">
-                                <li><a href="{% url 'videojuego' %}">subir</a></li>
-                                <li><a href="{% url 'catalogo' %}">catalogo</a></li>
+            <div class="collapse navbar-collapse" id="ned">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                    </li>
+                </ul>
+                <ul class="menu">
+                    {% if not request.user.is_authenticated %}
+                    <li><a href="{% url 'login' %}">Inicio sesion</a></li>
+                    <li><a href="{% url 'registro' %}">Registro</a></li>
+                    {% else %}
+                    <li><a href="#">{{ user.username }}</a>
+                        <ul class="submenu">
+                            <li><a href="{% url 'videojuego' %}">subir</a></li>
+                            <li><a href="{% url 'catalogo' %}">catalogo</a></li>
 
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Salir</a>
-                        </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logout' %}">Salir</a>
+                    </li>
 
 
-                        {% endif %}
-                    </ul>
-                </div>
+                    {% endif %}
+                </ul>
             </div>
-        </nav>
-        <!-- Contenido -->
-        {% block content %}{% endblock %}
-        <!-- Javascript -->
-        <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
-        <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-        <script src="{% static 'core/js/main.js' %}"></script>
-    </body>
+        </div>
+    </nav>
+
+    <!-- Contenido -->
+    {% block content %}{% endblock %}
+    <!-- Javascript -->
+    <script src="{% static 'core/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'core/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/main.js' %}"></script>
+</body>
 
 </html>

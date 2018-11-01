@@ -1,31 +1,102 @@
 {% extends 'core/base.html' %} {% load static %} {% block title %}Iniciar sesión{% endblock %} {% block content %}
-<style>
-    .errorlist {
-        color: red;
-    }
-</style>
-<main role="main">
-    <div class="container">
-        <div class="row mt-3">
-            <div class="col-md-9 mx-auto mb-5">
-                {% if 'register' in request.GET %}
-                <p style="color:green">Usuario registrado correctamente , ya puedes identidicarte</p> {% endif %}
-                <form action="" method="post">{% csrf_token %}
-                    <h3 class="mb-4">Iniciar sesión</h3>
-                    {% if form.non_field_errors %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'and/images/icons/favicon.ico' %}" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/animate/animate.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/animsition/css/animsition.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/select2/select2.min.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'and/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'and/css/main.css' %}">
+    <!--===============================================================================================-->
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100 p-t-85 p-b-20">
+                <form class="login100-form validate-form" action="" method="post">{% csrf_token %}
+                    <span class="login100-form-title p-b-70">
+						Iniciar Sesión
+                    </span> {% if form.non_field_errors %}
                     <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
                     {% endif %}
 
-                    <p>
-                        <input type="text" name="username" autofocus maxlength="254" required id="id_username" class="form-control" placeholder="Nombre de usuario" />
-                    </p>
-                    <p>
-                        <input type="password" name="password" required id="id_password" class="form-control" placeholder="Contraseña" />
-                    </p>
-                    <p><input type="submit" class="btn btn-primary btn-block" value="Acceder"></p>
+                    <span class="login100-form-avatar">
+						<img src="{% static 'and/images/inicio.jpg' %}" alt="AVATAR">
+					</span>
+
+                    <div class="wrap-input100 validate-input m-t-85 m-b-35" data-validate="Enter username">
+                        <input class="input100" type="text" name="username" required id="id_username">
+                        <span class="focus-input100" data-placeholder="Nombre Usuario"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-50" data-validate="Enter password">
+                        <input class="input100" type="password" name="password" required id="id_password">
+                        <span class="focus-input100" data-placeholder="Contraseña"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+							Ingresar
+						</button>
+                    </div>
+
+                    <ul class="login-more p-t-190">
+                        <li>
+                            <span class="txt1">
+								¿Aun no te has registrado?
+							</span>
+
+                            <a href="{% url 'registro' %}" class="txt2">
+								Ingresa aquí
+							</a>
+                        </li>
+                    </ul>
                 </form>
             </div>
         </div>
     </div>
-</main>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/animsition/js/animsition.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/bootstrap/js/popper.js' %}"></script>
+    <script src="{% static 'and/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/select2/select2.min.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/daterangepicker/moment.min.js' %}"></script>
+    <script src="{% static 'and/vendor/daterangepicker/daterangepicker.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/vendor/countdowntime/countdowntime.js' %}"></script>
+    <!--===============================================================================================-->
+    <script src="{% static 'and/js/main.js' %}"></script>
+
+</body>
+
+</html>
 {% endblock %}
