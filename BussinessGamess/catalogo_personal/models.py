@@ -19,6 +19,12 @@ class Videojuegos(models.Model):
         verbose_name = "videojuego"
         verbose_name_plural = "catalogopersonal"
         ordering = ["created"]
+    
+    def get_absolute_url(self):
+        from django.urls import reverse
+        return reverse('detalles', kwargs={'pk': self.id})
 
     def __str__(self):
         return self.title
+
+    

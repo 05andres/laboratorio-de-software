@@ -28,6 +28,8 @@ class VideojuegosViews(View):
             return render(request, 'catalogo_personal/videojuego.html', {
             'videojuegos_form':videojuegos_form,
         })
+        
 def catalogo(request):
-    catalogo = Videojuegos.objects.filter(owner_id=request.user)
+    catalogo = Videojuegos.objects.filter(owner_id=request.user.id)
+    print (request.user)
     return render(request,"catalogo_personal/catalogo.html",{'catalogo':catalogo,'title': "Catalogo personal"})

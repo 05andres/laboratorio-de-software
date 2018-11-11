@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('',include('core.urls')),
     path('',include('catalogo_personal.urls')),
+    path('',include('catalogo_general.urls')),
     path('admin/', admin.site.urls),
     path('',include(('core.urls','core'), namespace='core')),
     # Paths de auth

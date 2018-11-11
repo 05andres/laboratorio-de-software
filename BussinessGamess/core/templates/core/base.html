@@ -12,9 +12,10 @@
     <!-- Estilos -->
     <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'core/css/main.css' %}" rel="stylesheet">
     <link href="{% static 'core/css/estilos.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'core/css/estilo2.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'and/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'and/css/main.css' %}">
 </head>
 
 
@@ -22,14 +23,14 @@
     <!-- Navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">BusinessGames</a>
+            <a class="navbar-brand" href="{% url 'general' %}">BusinessGames</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ned" aria-controls="ned" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
             <div class="collapse navbar-collapse" id="ned">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'home' %}">Inicio</a>
+                        <a class="nav-link" href="{% url 'general' %}">Inicio</a>
                     </li>
                 </ul>
                 <ul class="menu">
