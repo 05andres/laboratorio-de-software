@@ -10,6 +10,9 @@ from django.views.generic import CreateView, DetailView, ListView
 from django.views.generic.edit import FormMixin
 from .forms import ComentariosForm
 from django.contrib import messages
+from django.http import JsonResponse
+
+
 
 
 
@@ -56,48 +59,29 @@ class AuthorDetail(FormMixin, DetailView):
                     comment.owner = request.user
                     comment.videojuego =id_videojuego
                     comment.save()
-                    return redirect(reverse_lazy('catalogo'))
+                    return JsonResponse({
+                        'content':{
+                            'mensaje':'su mensaje ha sido recibido',
+                        }
+
+                        }
+                    )
+                
                 else:
-                    return redirect(reverse_lazy('catalogo'))
+                     return JsonResponse({
+                        'content':{
+                            'mensaje':'su mensaje ha sido recibido',
+                        }
+
+                        }
+                    )
  
             else:
-                return self.form_invalid(form)
-
-    def form_valid(self, form):
-        # Here, we would record the user's interest using the message
-        # passed in form.cleaned_data['message']
-        return super().form_valid(form)
+                return render(request, 'catalogo_general/detalles.html',{'form': form})
+            
+            return render(request, 'catalogo_general/detalles.html',{'form':form})
 
     
-
-
-'''
-class ComentariosViews(View):
-    def get(self, request):
-        comentarios_form = ComentariosForm()
-        return render(request, 'catalogo_personal/videojuego.html', {
-            'comentarios_form':comentarios_form,
-        })
-
-    @transaction.atomic
-    def post(self,request,pk):
-        id_videojuego = get_object_or_404(Videojuegos, pk=pk)
-        if request.method == 'POST':
-            comenarios_form= ComentariosForm(request.POST,request.FILES)
-            if comentarios_form.is_valid():
-                new_comentario = comenarios_form.save(commit=False)
-                new_comentario.owner = request.user
-                new_comentario.videojuego = id_videojuego
-
-                new_videojuego.save()
-                return redirect('detalles',id_videojuego.pk)
-        
-            return render(request, 'catalogo_general/detalles.html', {
-            'comentarios_form':comentarios_form,
-        })
-    '''
-
-
 def ComentariosViews(request, pk):
     post = get_object_or_404(Videojuegos, pk=pk)
     comentario_form = ComentariosForm(request.POST)

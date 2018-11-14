@@ -6,8 +6,19 @@
 <p><strong>Summary:</strong> {{ videojuego.sinopsis }}</p>
 <p><strong>ISBN:</strong> {{ videojuego.categoria }}</p>
 <div class="col-md-9 mx-auto mb-5">
-    <form action="" method="post">{% csrf_token %} {{ form.as_p }}
+    <form action="" method="post" id="id_comentarios">{% csrf_token %} {{ form.as_p }} {% if user.is_authenticated %}
         <p><input type="submit" class="btn btn-primary btn-block" value="Confirmar"></p>
+        {% else %}
+        <li>para realizar comentarios debe iniciar sesion </li>
+        {% endif %}
     </form>
 </div>
+{% endblock %} {% block js %}
+<script>
+    $(document).ready(function() {
+        $('#id_comentarios').on('submit', function() {
+            alert('comentario publicado');
+        });
+    });
+</script>
 {% endblock %}
