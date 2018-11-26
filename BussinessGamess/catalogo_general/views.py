@@ -11,18 +11,15 @@ from django.views.generic.edit import FormMixin
 from .forms import ComentariosForm
 from django.contrib import messages
 from django.http import JsonResponse
-
-
-
-
-
-
-
+from django.core import serializers
+from .models import Comentarios
+from catalogo_personal.models import Videojuegos
+from django.core.serializers import serialize
+from django.db.models import F,Q
+from django.contrib.auth.models import User
 # Create your views here.
-'''def catalogo_General(request):
-    catalogo_General = Videojuegos.objects.all()
-    return render(request,"catalogo_general/general.html",{'catalogo_General':catalogo_General})'''
 class catalogo_General(ListView):
+    print("general")
     template_name = 'catalogo_general/general.html'
     model = Videojuegos
     context_object_name = 'catalogo_General'
@@ -32,67 +29,46 @@ class detalles_videojuegos(DetailView):
     model = Videojuegos
     context_object_name = 'videojuego'
 
+def lista_comentarios(request):
+    if request.method == 'GET':
+        co_id = request.GET['co_id']
+        comentarios = Comentarios.objects.filter(videojuego=co_id).select_related('owner')
+        print (comentarios)
+        data=serialize('json',comentarios)
+        print(data)
+        '''
+        import json
+        jsonToPython = json.loads(data)
+        print(jsonToPython[0]['fields']['owner'])
+        print (len(jsonToPython))
+        lis_dueños=[]
+        for i in range(0,len(jsonToPython)):
+            dueños = jsonToPython[i]['fields']['owner']
+            lis_dueños.append(dueños)
+        print(lis_dueños)   
+        owner_comment=User.objects.filter(id__in=lis_dueños).only('username')'''           
+        return JsonResponse(data,safe=False) # Sending an success response
 
-class AuthorDetail(FormMixin, DetailView):
-    template_name = 'catalogo_general/detalles.html'
-    model = Videojuegos
-    form_class = ComentariosForm
-    context_object_name = 'videojuego'
-
-    def get_success_url(self):
-        from django.urls import reverse
-        return reverse('detalles', kwargs={'pk': Videojuegos.id})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['form'] = self.get_form()
-        return context
-
-    def post(self, request,pk, *args, **kwargs):
-        form = self.get_form()
-        id_videojuego = get_object_or_404(Videojuegos, pk=pk) 
-        if request.method == "POST":
-            if form.is_valid():
-                if request.user.is_authenticated:
-                    print (id_videojuego)
-                    comment = form.save(commit=False)
-                    comment.owner = request.user
-                    comment.videojuego =id_videojuego
-                    comment.save()
-                    return JsonResponse({
-                        'content':{
-                            'mensaje':'su mensaje ha sido recibido',
-                        }
-
-                        }
-                    )
-                
-                else:
-                     return JsonResponse({
-                        'content':{
-                            'mensaje':'su mensaje ha sido recibido',
-                        }
-
-                        }
-                    )
- 
-            else:
-                return render(request, 'catalogo_general/detalles.html',{'form': form})
-            
-            return render(request, 'catalogo_general/detalles.html',{'form':form})
-
-    
-def ComentariosViews(request, pk):
-    post = get_object_or_404(Videojuegos, pk=pk)
-    comentario_form = ComentariosForm(request.POST)
-    if request.method == "POST":
-        if comentario_form.is_valid():
-            comment = comentario_form.save(commit=False)
-            comment.owner = request.user
-            comment.videojuego = post
+def comentarBDD(request): 
+    data={}
+    if request.method == 'POST' :
+            print ("hola mundo")
+            comentario=request.POST['comentario']
+            videojuego=Videojuegos.objects.get(id = request.POST['videojuego'])
+            owner = request.user
+            nombre_owner= request.user.username
+            print (nombre_owner)
+            comment=Comentarios(owner=owner,videojuego=videojuego,text=comentario,owner_username=nombre_owner)
             comment.save()
-            return redirect('detalles', pk=post.pk)
-    else:
-        comentario_form = ComentariosForm()
-    return render(request, 'catalogo_general/detalles.html',{'form': comentario_form})
+            data['nombre']= nombre_owner
+            data['text']= comentario
+            return JsonResponse(data,safe=False)
+    return JsonResponse(data,safe=False)
+    
+
+
+
+
+
+
 

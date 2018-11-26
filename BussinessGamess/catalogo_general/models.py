@@ -9,7 +9,8 @@ class Comentarios (models.Model):
     owner = models.ForeignKey(User,on_delete=models.CASCADE)
     videojuego = models.ForeignKey('catalogo_personal.Videojuegos',on_delete=models.CASCADE)
     text = models.TextField()
-    created = models.DateTimeField(auto_now_add=True,verbose_name="Fecha de creación",blank=True,null=True)
+    created = models.DateField(auto_now_add=True,verbose_name="Fecha de creación",blank=True,null=True)
+    owner_username= models.CharField(max_length = 200,blank=True, null=True)
 
     class Meta:
         verbose_name = "comentario"
