@@ -6,7 +6,7 @@ from django.views.decorators.http import require_POST
 
 '''path('lista_comentarios/',views.lista_comentarios,name="lista_comentarios"),'''
 urlpatterns = [
-                                                                                                                                                                            
+    path('general/',catalogo_General.as_view(),name="general"),                                                                                                                                                                    
     path('<pk>/detalles/',detalles_videojuegos.as_view(), name='detalles'),
     path('comentarBDD/',views.comentarBDD,name="comentarBDD"),
     path('lista_comentarios/',views.lista_comentarios,name="lista_comentarios"),
