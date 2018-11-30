@@ -14,7 +14,18 @@ html {
 }
 
 body {
-    margin: 0
+    background: rgba(43, 13, 13, 1);
+    background: -moz-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(43, 13, 13, 1)), color-stop(100%, rgba(84, 21, 21, 1)));
+    background: -webkit-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -o-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: linear-gradient(to bottom, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b0d0d', endColorstr='#541515', GradientType=0);
+    height: 100%;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 article,

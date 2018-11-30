@@ -62,6 +62,10 @@ Table OF Contents
 	Buttons
 \*----------------------------*/
 
+body {
+    background-color: rgba(43, 13, 13, 1);
+}
+
 .primary-btn {
     display: inline-block;
     padding: 12px 30px;
@@ -468,28 +472,35 @@ input[type]:focus {
 
 .header-search {
     padding: 15px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
 }
 
 .header-search form {
     position: relative;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 600px;
 }
 
 .header-search form .input-select {
-    margin-right: -4px;
+    margin-right: -8px;
     border-radius: 40px 0px 0px 40px;
 }
 
 .header-search form .inputt {
-    width: calc(100% - 300px);
-    margin-right: -4px;
+    width: calc(400% - 300px);
+    margin-right: 5px;
 }
 
 .header-search form .search-btn {
     height: 40px;
-    width: 100px;
+    width: 60px;
     background: #D10024;
     color: #FFF;
-    font-weight: 700;
+    font-weight: 600;
     border: none;
     border-radius: 0px 40px 40px 0px;
 }

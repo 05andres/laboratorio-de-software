@@ -1,0 +1,73 @@
+body {
+    background: rgba(43, 13, 13, 1);
+    background: -moz-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(43, 13, 13, 1)), color-stop(100%, rgba(84, 21, 21, 1)));
+    background: -webkit-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -o-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: linear-gradient(to bottom, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b0d0d', endColorstr='#541515', GradientType=0);
+    text-align: center;
+    height: 100%;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+html {
+    height: 100%;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.logo_login {
+    margin: 40px 10px 0px;
+    width: 230px;
+    height: auto;
+}
+
+.login_form {
+    margin-top: 30px;
+}
+
+.welcome_text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+}
+
+.login_title {
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.form_card {
+    border-radius: 15px;
+    padding: 20px 50px;
+    background-color: #e0e0e0;
+}
+
+.form-control {
+    font-family: 'Montserrat', sans-serif;
+    border-radius: 50px;
+    margin: 20px 0;
+}
+
+.register_link {
+    margin-top: 30px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.register_link_a:hover {
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 50px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+}

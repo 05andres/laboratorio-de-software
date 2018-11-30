@@ -23,4 +23,15 @@ class Comentarios (models.Model):
     def get_absolute_url(self):
         return reverse('Videojuegos:comentarios', kwargs={'pk': self.pk})
 
+class votacion(models.Model):
+    videojuego = models.ForeignKey('catalogo_personal.Videojuegos',on_delete=models.CASCADE)
+    valor_votacion = models.IntegerField()
+    
+    class Meta:
+        verbose_name="votacion"
+        verbose_name_plural="votaciones"
+    
+    def get_absolute_url(self):
+        return reverse('Videojuegos:votaciones', kwargs={'pk': self.pk})
+
 
