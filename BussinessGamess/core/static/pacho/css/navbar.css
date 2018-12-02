@@ -1,21 +1,21 @@
-.navbarHome {
+.navbarHome{
     background-color: #c82333;
     width: 100%;
     align-items: center;
     padding: 15px 10px;
 }
 
-.home_button {
-    color: white;
-    font-size: 35px;
+.home_button{
+  color: white;
+  font-size: 35px;
 }
 
-.search_button {
-    color: white;
-    font-size: 16px;
+.search_button{
+  color: white;
+  font-size: 16px;
 }
 
-.navbarHomeMenuIcon {
+.navbarHomeMenuIcon{
     height: 50px;
     width: 65px;
     float: left;
@@ -23,32 +23,32 @@
     cursor: pointer;
 }
 
-.navbarHomeMenuIconResponsive {
+.navbarHomeMenuIconResponsive{
     display: none;
 }
 
-.navbarHomeLogo {
+.navbarHomeLogo{
     width: 150px;
     height: auto;
     margin-left: 20px;
     padding: 15px;
 }
 
-.navbarHomeButton {
+.navbarHomeButton{
     background-color: #00152b;
     color: white;
     font-family: 'Montserrat', sans-serif;
     margin: 0 25px;
 }
 
-.navbarHomeList {
+.navbarHomeList{
     list-style: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
 }
 
-.navbarHomeListItem {
+.navbarHomeListItem{
     margin: 0px 15px;
     position: relative;
     align-items: center;
@@ -56,56 +56,70 @@
     text-align: center;
 }
 
-.imgBox {
-    border-radius: 50px;
-    width: 55px;
-    height: 55px;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    float: right;
-    margin-right: 10px;
+.imgBox{
+  border-radius: 50px;
+  width: 55px;
+  height: 55px;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+  float: right;
+  margin-right: 10px;
 }
 
 .imgProfile {
-    width: 55px;
-    height: 55px;
-    align-items: center;
+  width: 55px;
+  height: 55px;
+  align-items: center;
 }
 
-.navbarHomeListItem a {
+.linkImgPerfil{
+  width: 55px;
+  height: 55px;
+}
+
+.dropdown-item{
+  font-family: 'Montserrat', sans-serif;
+}
+
+.cerrarSesionLink{
+  color: red;
+  font-weight: bold;
+}
+
+.navbarHomeListItem a{
     text-decoration: none;
     color: #ffffff;
     font-weight: bold;
 }
 
-.navbarHomeListItemIcon {
+.navbarHomeListItemIcon{
     width: 27px;
     height: auto;
 }
 
-.navbarHomeListItemDiv {
-    font-size: 16px;
-    color: #9e9a9a;
-    content: "";
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-    position: relative;
+.navbarHomeListItemDiv{
+  font-size: 16px;
+  color: #9e9a9a;
+  content: "";
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  position: relative;
 }
 
-#buscador {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
+#buscador{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
 }
 
-#inputBuscador {
-    border: none;
-    background-color: #f2f2f2;
-    margin-top: 0;
+#inputBuscador{
+  border: none;
+  background-color: #f2f2f2;
+  margin-top: 0;
 }
 
-.sectionIconBuscador {
+.sectionIconBuscador{
     display: block;
 }
 
@@ -131,71 +145,71 @@
     cursor: pointer;
 }
 
-.btn_buscador {
+.btn_buscador{
     background-color: #FF6625;
 }
 
-.iconBuscador {
+.iconBuscador{
     width: 20px;
     height: auto;
 }
 
-.buscadorIconDiv {
+.buscadorIconDiv{
     display: none;
 }
 
-.ItemCarrito {
+.ItemCarrito{
     position: relative;
 }
 
-.navBarListItemTextMiCuenta {
-    min-width: 68px;
+.navBarListItemTextMiCuenta{
+  min-width: 68px;
 }
 
-.navbarHomeListItemIconResponsive {
-    position: absolute;
-    right: 70px;
-    top: 15px;
-    width: 38px;
-    height: auto;
+.navbarHomeListItemIconResponsive{
+  position: absolute;
+  right: 70px;
+  top: 15px;
+  width: 38px;
+  height: auto;
 }
 
-.btnBuscadorResp {
-    position: absolute;
-    right: 0px;
-    top: 5px;
+.btnBuscadorResp{
+  position: absolute;
+  right: 0px;
+  top: 5px;
 }
 
-.iconoNumberResponsive {
-    position: absolute;
-    right: 60px;
-    top: 8px;
-    width: 20px;
+.iconoNumberResponsive{
+  position: absolute;
+  right:60px;
+  top: 8px;
+  width: 20px;
 }
 
-.carritoIconDiv {
-    display: none;
+.carritoIconDiv{
+  display: none;
 }
 
-.OnlyDesktop {
-    visibility: visible;
-    display: initial;
+.OnlyDesktop{
+  visibility: visible;
+  display: initial;
 }
 
-.OnlyDesktopFlex {
+.OnlyDesktopFlex{
     display: flex;
 }
 
-.OnlyResponsiveFlex {
+.OnlyResponsiveFlex{
     display: none;
 }
 
-.OnlyResponsive {
-    visibility: hidden;
-    display: none;
+.OnlyResponsive{
+  visibility: hidden;
+  display: none;
 }
 
-.float_menu_button_left {
+.float_menu_button_left{
     border-radius: 50%;
     align-items: center;
     text-align: center;
@@ -207,12 +221,12 @@
     position: fixed;
     bottom: 10px;
     left: 10px;
-    border: none;
+    border:none;
     z-index: 1000;
     box-shadow: 3px 3px 6px gray;
 }
 
-.float_menu_button_right {
+.float_menu_button_right{
     border-radius: 50%;
     align-items: center;
     text-align: center;
@@ -224,67 +238,77 @@
     position: fixed;
     bottom: 10px;
     right: 10px;
-    border: none;
+    border:none;
     z-index: 1000;
     box-shadow: 3px 3px 6px gray;
 }
 
-.menu_icon {
+.menu_icon{
     color: white;
     width: 35px;
     height: auto;
 }
 
-.chat_icon {
+.chat_icon{
     color: white;
     width: 30px;
     height: auto;
 }
 
 @media screen and (max-width: 768px) {
-    .OnlyDesktop {
-        visibility: hidden;
-        display: none;
-    }
-    .OnlyDesktopFlex {
-        display: none;
-    }
-    .OnlyResponsiveFlex {
-        display: flex;
-    }
-    .OnlyResponsive {
-        visibility: visible;
-        display: initial;
-    }
-    .navbarHomeMenuIconEscritorio {
-        display: none;
-    }
-    .navbarHomeMenuIconResponsive {
-        display: block;
-    }
-    #buscador,
-    .navbarHomeList,
-    .navbarHomeButton {
-        display: none !important;
-    }
-    .btnBuscadorResp {
-        margin: 5px;
-        padding: 0 10px;
-        width: 50px;
-        height: auto;
-        float: right;
-    }
-    .buscadorIconDiv {
-        display: block;
-        width: 100%;
-    }
-    .carritoIconDiv {
-        display: block;
-    }
+  .OnlyDesktop{
+    visibility: hidden;
+    display: none;
+  }
+
+  .OnlyDesktopFlex{
+  	display: none;
+  }
+
+  .OnlyResponsiveFlex{
+    display: flex;
+  }
+
+  .OnlyResponsive{
+    visibility: visible;
+    display: initial;
+  }
+
+  .navbarHomeMenuIconEscritorio{
+    display: none;
+  }
+
+  .navbarHomeMenuIconResponsive{
+    display: block;
+  }
+
+  #buscador,
+  .navbarHomeList,
+  .navbarHomeButton{
+    display: none !important;
+  }
+
+  .btnBuscadorResp{
+    margin: 5px;
+    padding: 0 10px;
+    width: 50px;
+    height: auto;
+    float: right;
+  }
+
+  .buscadorIconDiv{
+    display: block;
+    width: 100%;
+  }
+
+  .carritoIconDiv{
+    display: block;
+  }
+
 }
 
 @media screen and (max-width: 375px) {
-    .navbarHomeLogo {
-        margin-left: 0px;
-    }
+  .navbarHomeLogo {
+    margin-left: 0px;
+  }
 }

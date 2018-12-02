@@ -29,8 +29,8 @@ class catalogo_General(ListView):
     def get_queryset(self):
         form = self.form_class(self.request.GET)
         if form.is_valid():
-            return Videojuegos.objects.filter(title__icontains=form.cleaned_data['nombre'])
-        return Videojuegos.objects.all()
+            return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=form.cleaned_data['nombre'])
+        return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
 
 class detalles_videojuegos(DetailView):
     template_name = 'catalogo_general/detalles.html'
@@ -76,17 +76,33 @@ def comentarBDD(request):
     
 
 def Votacion(request):
+    data={}
     if request.method == "POST":
-        voto=request.POST['voto']
-        Video=request.POST['videojuego']
-        print(voto,Video)
-        videogame=Videojuegos.objects.get(id = request.POST['videojuego'])
-        votado=votacion.objects.create(videojuego=videogame,valor_votacion=voto)
-        '''p = Videojuegos.objects.get(id=videogame) 
-        stars_average = p.rating_set.aggregate(Avg('valor_votacion')).values()[0]'''
-        p=Videojuegos.objects.aggregate(average_price=Avg('votacion__valor_votacion'))
-        print (p)
-        return JsonResponse(p,safe=False)
+        if request.user.is_authenticated:
+            voto=request.POST['voto']
+            Video=request.POST['videojuego']
+            print(voto,Video)
+            videogame=Videojuegos.objects.get(id = request.POST['videojuego'])
+            votado=votacion.objects.create(videojuego=videogame,valor_votacion=voto)
+            '''p = Videojuegos.objects.get(id=videogame) 
+            stars_average = p.rating_set.aggregate(Avg('valor_votacion')).values()[0]'''
+            data['mensaje']="gracias por votar"
+            
+        else:
+            data['mensaje']="Para Calificar este videojuego debes iniciar sesión"
+    return JsonResponse(data,safe=False)
+
+
+
+def busqueda(request):
+    if request.is_ajax():
+        dato=request.GET['busqueda']
+        print (dato)
+        query_busqueda=Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=dato)
+        query=serialize('json',query_busqueda)
+        print(query)
+        return JsonResponse(query,safe=False)
+
 
 
 

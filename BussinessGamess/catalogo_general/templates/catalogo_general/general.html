@@ -20,8 +20,6 @@
     <!-- Estilos -->
     <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'core/css/estilos.css' %}" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'core/css/estilo2.css' %}">
     <!-- nouislider -->
     <link type="text/css" rel="stylesheet" href="{% static 'catalogoG/css/nouislider.min.css' %}" />
 
@@ -53,18 +51,7 @@
             <div class="row">
 
                 <!-- /ASIDE -->
-                
-
-                    <div class="header-search">
-                        <form>
-                            <input class="inputt" id="id_nombre" name="nombre" placeholder="Search here">
-                            <button for="nombre" class="search-btn">Search</button>
-
-                        </form>
-                    </div>
-                
-                
-
+            
                 <!-- STORE -->
                 <div id="store" class="col-md-11">
                     <!-- store top filter -->
@@ -85,7 +72,7 @@
                                     <img src="{{Videojuegos.image.url}}" alt="">
                                 </div>
                                 <div class="product-body">
-                                    <p class="product-category">Category</p>
+                                    <p class="product-category">{% if Videojuegos.votacion__valor_votacion__avg == none %} No Calificada {% else %}{{Videojuegos.votacion__valor_votacion__avg}}{% endif %}</p>
                                     <h3 class="product-name"><a href="#">{{Videojuegos.title}}</a></h3>
 
                                     <div class="product-rating">
@@ -107,7 +94,6 @@
                 <!-- /STORE -->
             </div>
             <!-- /row -->
-            {% endblock %}
         </div>
         <!-- /container -->
 
@@ -115,6 +101,7 @@
 
 
     <!-- jQuery Plugins -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{% static 'catalogoG/js/jquery.min.js' %}"></script>
     <script src="{% static 'catalogoG/js/bootstrap.min.js' %}"></script>
     <script src="{% static 'catalogoG/js/slick.min.js' %}"></script>
@@ -125,3 +112,4 @@
 </body>
 
 </html>
+ {% endblock %}

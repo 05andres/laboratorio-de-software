@@ -20,6 +20,7 @@ class SignUpView(View):
             'user_form': user_form,
             'profile_form': profile_form
         })
+   
 
     @transaction.atomic
     def post(self,request):
@@ -27,6 +28,9 @@ class SignUpView(View):
             user_form = UserForm(request.POST)
             profile_form = ProfileForm(request.POST)
             if user_form.is_valid() and profile_form.is_valid():
+                print("hola")
+                username=user_form.cleaned_data['username']
+                print (username)
                 new_user = user_form.save()
                 profile = profile_form.save(commit=False)
                 if profile.user_id is None:
@@ -35,14 +39,15 @@ class SignUpView(View):
                 profile_form.save()
                 username = request.POST['username']
                 password = request.POST['password1']
+                print(username,password)
                 user = authenticate(request, username=username, password=password)
                 if user is not None:
                     login(request, user)
-                return redirect(reverse_lazy('core:bienvenida') +'?register')
+                return redirect(reverse_lazy('personal:catalogo') +'?register')
         
-            return render(request, 'registration/signup.html', {
-            'user_form': user_form,
-            'profile_form': profile_form
+        return render(request, 'registration/signup.html', {
+        'user_form': user_form,
+        'profile_form': profile_form
         })
 
         

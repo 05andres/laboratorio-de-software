@@ -25,6 +25,7 @@ urlpatterns = [
     path('',include('catalogo_general.urls')),
     path('admin/', admin.site.urls),
     path('',include(('core.urls','core'), namespace='core')),
+    path('',include(('catalogo_personal.urls','catalogo_personal'),namespace='personal')),
     # Paths de auth
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('registration.urls')),

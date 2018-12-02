@@ -1,50 +1,4 @@
 $(document).ready(function() {
-    var data = $("#formulario").attr("id_co");
-    console.log(data)
-    actualizar();
-
-    function actualizar() {
-        $.ajax({
-                type: "GET",
-                url: "/lista_comentarios",
-                data: {
-                    co_id: data
-                },
-                dataType: 'json',
-                contentType: 'application/json',
-                cache: false,
-                //success: function(data) {
-                //console.log(data)}
-
-            })
-            .done(function(response) {
-                console.log(response);
-                var html;
-                console.log("hola")
-                var imagen = "{% static 'pacho/assets/man.png' %}";
-                $.each(JSON.parse(response), function(index, element) {
-                    //you can also use a templating engine like Underscore.js (the one I use), Mustache.js, Handlebars.js  http://garann.github.io/template-chooser/
-                    //html = '<li><strong>' + element.fields.text + '</strong> - <em> ' + element.fields.owner_username + '</em> - <span> ' + element.fields.created + '</span></li>';
-                    html = '<div class="row commentsUsers align-items-center" >';
-                    html += '<div class="col-md-2">';
-                    html += '<div class="imgBox">'
-                    html += '<img class="imgProfile" src="/static/pacho/assets/man_2.png">';
-                    html += '</div>';
-                    html += '</div>';
-                    html += '<div class="col-md-10">';
-                    html += '<p class="commentText">' + element.fields.text + '</p>';
-                    html += '</div>';
-                    html += '</div>';
-
-                    $('.commentsUsersRow').append(html);
-                });
-
-
-            });
-    };
-});
-
-$(document).ready(function() {
     $("[data-role='controlgroup']").on("change", function() {
         var csrftoken = getCookie('csrftoken');
         var videojuego = $("#formulario").attr("id_co");
@@ -78,7 +32,7 @@ $(document).ready(function() {
             .done(function(response) {
 
                 console.log(response);
-                alert('gracias por votar');
+                alert(response.mensaje);
 
             });
     });
@@ -167,3 +121,73 @@ function csrfSafeMethod(method) {
     // these HTTP methods do not require CSRF protection
     return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 }
+
+$(document).ready(function() {
+    $('#button-addon2').on('click', function() {
+        var busqueda = $("#inputBuscador").val()
+        var url = "http://127.0.0.1:8000/general/?nombre=" + busqueda;
+        $(location).attr('href', url);
+        d = document.getElementById("borrado");
+        while (d.hasChildNodes())
+            d.removeChild(d.firstChild);
+        if (busqueda != '') {
+            $.ajax({
+                    type: 'GET',
+                    url: "/buscador",
+                    data: {
+                        busqueda: busqueda,
+                    },
+                    dataType: 'json',
+                    cache: false
+
+                })
+                .done(function(response) {
+                    var html = '';
+                    console.log(response)
+                    $.each(JSON.parse(response), function(index, element) {
+                        cambio = element.id
+                        console.log(cambio)
+                        imagen = "/media/" + element.fields.image
+                        html = '<div class="mainContent container-fluid >'
+                        html += '<div class="row justify-content-center">'
+                        html += '<div class="col-8">'
+                            //html += '</div><div class="titleDiv">'
+                            //html = '<img class="logo_login" src="/static/pacho/assets/bg_logo.png">'
+                            //html = '<h1 class="welcome_text">Lo mas destacado de la semana</h1>'
+                            //html += '</div></div>'
+                        html += '<div class="vgSection">'
+                        html += '<div class="row justify-content-center">'
+                        html += '<div class="col-7">'
+                        html += '<div class="vgCard">'
+                        html += '<div class="container-fluid">'
+                        html += '<div class="row align-items-center">'
+                        html += '<div class="vgImage">'
+                        html += '<img class="vgImg" src=' + imagen + '>'
+                        html += '</div>'
+                        html += '<div class="vgDetails">'
+                        html += '<h3 class="vgTitle">' + element.fields.title + '</h3>'
+                        html += '<div class="col-md-12 ">'
+                        html += '<fieldset class="rating desktop-display-important pt-0">'
+                        html += '<div class="vgImage ">'
+                        html += '<img class="vgImg " src="/static/pacho/assets/star.png">'
+                        html += '<div class="col-8"><h3  class="vgTitle">4.0</</h3></div>'
+                        html += '</div>'
+                        html += '</fieldset>'
+                        html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+                        html += '</div>'
+
+                        $('body').appendTo(html);
+
+
+
+                    });
+                });
+
+
+        }
+
+    });
+});

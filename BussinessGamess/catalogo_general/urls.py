@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import  catalogo_General ,detalles_videojuegos,comentarBDD,lista_comentarios,votacion
+from .views import  catalogo_General ,detalles_videojuegos,comentarBDD,lista_comentarios,votacion,busqueda
 from . import views
 from django.contrib.auth.decorators import login_required, permission_required
 from django.views.decorators.http import require_POST
@@ -11,6 +11,7 @@ urlpatterns = [
     path('comentarBDD/',views.comentarBDD,name="comentarBDD"),
     path('lista_comentarios/',views.lista_comentarios,name="lista_comentarios"),
     path('votacion/',views.Votacion,name="votacion"),
+    path('buscador/',views.busqueda,name='buscador'),
        
 
 ]

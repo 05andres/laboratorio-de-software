@@ -1,8 +1,71 @@
-{% extends 'core/base.html' %} {% load static %} {% block title %}Inicio{% endblock %} {% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block title %}Inicio{% endblock %} 
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<div class="container">
-    <div style="padding-top:50px; text-align:center;">
-        <h1>{{title}}</h1>
-    </div>
-</div>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'pacho/css/style_stars_rating.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'pacho/css/navbar.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'pacho/css/style_catalogo_general.css' %}">
+
+  </head>
+  <body>
+     {% block content %}
+		<div class="mainContent container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-8">
+          <div class="titleDiv">
+	         <img class="logo_login" src="{% static 'pacho/assets/bg_logo.png' %}">
+	    		 <h1 class="welcome_text">Lo mas destacado de la semana</h1>
+          </div>
+          <div class="vgSection">
+            <div class="row justify-content-center">
+              <div class="col-7">
+              {% for video in videojuegos %}
+              <a href="{% url 'detalles' video.id %}">
+                <div class="vgCard">
+                  <div class="container-fluid">
+                    <div class="row align-items-center">
+                      <div class="vgImage">
+                        <img class="vgImg" src="{{video.image.url}}">
+                      </div>
+                      <div class="vgDetails">
+                        <h3 class="vgTitle">{{video.title}}</h3>
+                        <div class="col-md-12 ">
+                          <fieldset class="rating desktop-display-important pt-0">           
+                            <div class="vgImage ">
+                                <img class="vgImg " src="{% static 'pacho/assets/star.png' %}">
+                                <div class="col-8"><h3  class="vgTitle">{{video.votacion__valor_votacion__avg}}</h3></div>
+                            </div>
+                          </fieldset>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+      		    	</div> 
+                </a>
+                {% endfor %}                            
+              </div>  
+            </div>
+          </div>
+		    </div>
+    	</div>
+  	</div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  </body>
+</html>
 {% endblock %}
+
+

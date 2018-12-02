@@ -18,8 +18,11 @@ class VideojuegosViews(View):
     @transaction.atomic
     def post(self,request):
         if request.method == 'POST':
+            print("hola")
             videojuegos_form= VideojuegosForm(request.POST,request.FILES)
+            print(videojuegos_form.errors)
             if videojuegos_form.is_valid():
+                print("hola if")
                 new_videojuego =videojuegos_form.save(commit=False)
                 new_videojuego.owner = request.user
                 new_videojuego.save()

@@ -1,66 +1,76 @@
-body{
-	background: rgba(43,13,13,1);
-	background: -moz-linear-gradient(top, rgba(43,13,13,1) 0%, rgba(84,21,21,1) 100%);
-	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(43,13,13,1)), color-stop(100%, rgba(84,21,21,1)));
-	background: -webkit-linear-gradient(top, rgba(43,13,13,1) 0%, rgba(84,21,21,1) 100%);
-	background: -o-linear-gradient(top, rgba(43,13,13,1) 0%, rgba(84,21,21,1) 100%);
-	background: -ms-linear-gradient(top, rgba(43,13,13,1) 0%, rgba(84,21,21,1) 100%);
-	background: linear-gradient(to bottom, rgba(43,13,13,1) 0%, rgba(84,21,21,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2b0d0d', endColorstr='#541515', GradientType=0 );
-	height: 100%;
-	overflow-x: hidden;
-	background-repeat: no-repeat;
-	background-size: contain;	
+body {
+    background: rgba(43, 13, 13, 1);
+    background: -moz-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(43, 13, 13, 1)), color-stop(100%, rgba(84, 21, 21, 1)));
+    background: -webkit-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -o-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: -ms-linear-gradient(top, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    background: linear-gradient(to bottom, rgba(43, 13, 13, 1) 0%, rgba(84, 21, 21, 1) 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#2b0d0d', endColorstr='#541515', GradientType=0);
+    height: 100%;
+    overflow-x: hidden;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-html{
-	height: 100%;
-	overflow-x: hidden;
-	text-align: center;
+html {
+    height: 100%;
+    overflow-x: hidden;
+    text-align: center;
 }
 
-ul{
-	margin-bottom: 0;
+ul {
+    margin-bottom: 0;
 }
 
-.mainContent{
-	width: 100%;
+.mainContent {
+    width: 100%;
 }
 
-.logo_login{
-	margin:40px 10px 0px;
-	width: 230px;
-	height: auto;
-	text-align: center;
+.logo_login {
+    margin: 40px 10px 0px;
+    width: 230px;
+    height: auto;
+    text-align: center;
 }
 
-.btn{
-	border-radius: 50px;
-	width: 100%;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+.btn {
+    border-radius: 50px;
+    width: 100%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
-.titleDiv{
-	width: 100%;
-	text-align: center;
-	margin-bottom: 40px;
+.titleDiv {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.welcome_text{
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bolder;
-	color: #ffffff;
-	margin-top: 20px;
+.welcome_text,
+.welcome_text_personal,
+.subtitle_welcome_text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
+    color: #ffffff;
+    margin-top: 20px;
 }
 
-.vgSection{
-	width: 100%;
+.welcome_text_personal {
+    font-size: 70px;
+}
+
+.subtitle_welcome_text {
+    font-size: 30px;
+}
+
+.vgSection {
+    width: 100%;
 }
 
 .vgCard {
     width: 100%;
-    background-color: rgb(255,255,255,0.2);
+    background-color: rgb(255, 255, 255, 0.2);
     padding: 20px 20px;
     margin: 10px 0;
     border: 2px solid white;
@@ -68,22 +78,22 @@ ul{
     margin-bottom: 20px;
 }
 
-.vgTitle{
-	color: white;
-	font-family: 'Montserrat', sans-serif;
-	font-weight: bold;
+.vgTitle {
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
 }
 
-.vgImage{
-	width: 50%;
-	height: auto;
+.vgImage {
+    width: 50%;
+    height: auto;
 }
 
-.vgImg{
-	width: 80%;
+.vgImg {
+    width: 80%;
 }
 
-.vgDetails{
-	width: 50%;
-	text-align: left;
+.vgDetails {
+    width: 50%;
+    text-align: left;
 }

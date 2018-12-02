@@ -16,17 +16,24 @@
 	    <img class="logo_login" src="{% static 'pacho/assets/bg_logo.png' %}">
 			<div class="row justify-content-center">
 		  	<div class="col-5 login_form">
-		    	<form class="form_card validate-form" action="" method="post">{% csrf_token %}
+		    	<div class="form_card">
 		    		<h1 class="welcome_text">Bienvenido</h1>
+           <form id="login-form"  action="" method="post">{% csrf_token %}
 		    		<p class="login_title">Iniciar sesión</p>
                     {% if form.non_field_errors %}
                     <p style="color:red">Usuario o contraseña incorrectos, prueba de nuevo.</p>
-                    {% endif %}
+            <p>        {% endif %}
 		    		<input class="form-control form-control-lg" type="text" placeholder="Ingresa tu Usuario" name="username" required id="id_username">
-		    		<input class="form-control form-control-lg" type="password" placeholder="Ingresa tu Contraseña" name="password" required id="id_password">
-		    		<button type="button" class="btn btn-danger btn-lg">INGRESAR</button>
-		    		<p class="register_link">¿Aún no tienes cuenta? <a class="register_link_a" href="{% url 'registro' %}">Regístrate</a></p>
-		    	</form>
+		    		</p>
+            <p> 
+            <input class="form-control form-control-lg" type="password" placeholder="Ingresa tu Contraseña" name="password" required id="id_password">
+		    		</p>
+            <p>
+            <button type="submit" class="btn btn-danger btn-lg">INGRESAR</button>
+		    		</p>
+            </form>
+            <p class="register_link">¿Aún no tienes cuenta? <a class="register_link_a" href="{% url 'registro' %}">Regístrate</a></p>
+          </div>
 		    </div>
     	</div>
   	</div>
