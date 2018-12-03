@@ -33,31 +33,21 @@
                 <div class="col-md-6">
                   <h2 class="vgTitle">{{ videojuego.title }}</h2>
                   <div class="row">
-                    <div class="col-md-12">
-                      <fieldset id="estrellitas" data-role="controlgroup" class="rating desktop-display-important pt-0">
-                        <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                        <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                        <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                        <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                        <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                      </fieldset>
-                    </div>
                   </div>
                   <div>
                     <h5 class="vgDetailText">{{ videojuego.FechaLanzamiento }}</h5>
                     <h5 class="vgDetailText">{{ videojuego.categoria }}</h5>
                     <h5 class="vgDetailText">{{ videojuego.duracionPromedio }}</h5>
-                    {% if  videojuego.precio  > 0 and  videojuego.Descuento != videojuego.precio  %}
-                    <h5 class="vgDetailText"><span style='color:black;text-decoration:line-through'>
-                        <span style='color:white'>Antes ${{ videojuego.precio }}</span>
-                    </span></h5>
-                    <h5 class="vgDetailText">Ahora ${{ videojuego.Descuento }}</h5>
-                    {% else %}
                     <h2 class="vgPrice">$ {{ videojuego.precio }}</h2>
-                    {% endif%}
+                    <h2 class="vgPrice">Descuento : $ {{ videojuego.Descuento}}</h2>
                     <p class="parrafoSinopsis">
                     {{ videojuego.sinopsis }}
                     </p>
+                    <form method="post" id="formdata" id_co="{{ videojuego.id }}" id_valor="{{ videojuego.precio }}">{% csrf_token %}
+                      <input type="button" id="des" onclick="descuentos()" value="Asignar Descuento">
+                    </form>
+                    <form method="post" id="formdataa">{% csrf_token %}
+                    </form>
                   </div>
                 </div>  
               </div>  
@@ -68,29 +58,7 @@
               <h1 class="welcome_text">Comentarios</h1>
             </div>
             <div class="commentTextArea">
-              <div class="row">
-                <div class="col-md-2">
-                  <div class="imgBox">
-                    <img class="imgProfile" src="{% static 'pacho/assets/man.png' %}">
-                  </div>
-                </div>
-                <div class="col-md-10">
-                  <div class="form-group">
-                    <label for="exampleFormControlTextarea1" class="commentTextAreaLabel">Realizar comentario:</label>
-                    <textarea type="text" class="form-control" id="exampleFormControlTextarea1" nombre="exampleFormControlTextarea1" rows="3" required></textarea>
-                  </div>
-                  {% if request.user.is_authenticated %}
-                  <button type="button" id="botonenviar" class="btn btn-danger btn-lg">COMENTAR</button>
-                  {% else %}
-                <li>
-                    <label  class="commentTextAreaLabel">¿Aun no haz iniciado sesion?</label>
-
-                    <a href="{% url 'login' %}" class="txt2">
-                        Ingresa aquí
-                    </a>
-                </li>
-                {% endif %}
-                </div>
+              
               </div>
               <div class="commentsUsersRow" id="comentario">  
               </div>
@@ -110,6 +78,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     {% block js %}
     <script src="{% static 'catalogoG/js/coment.js' %}"></script>
+    <script src="{% static 'catalogoG/js/descuentos.js' %}"></script>
      {% endblock %}
   </body>
 </html>

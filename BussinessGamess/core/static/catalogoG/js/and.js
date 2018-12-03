@@ -125,7 +125,7 @@ function csrfSafeMethod(method) {
 $(document).ready(function() {
     $('#button-addon2').on('click', function() {
         var busqueda = $("#inputBuscador").val()
-        var url = "http://127.0.0.1:8000/general/?nombre=" + busqueda;
+        var url = "http://127.0.0.1:8000/busqueda/?nombre=" + busqueda;
         $(location).attr('href', url);
         d = document.getElementById("borrado");
         while (d.hasChildNodes())

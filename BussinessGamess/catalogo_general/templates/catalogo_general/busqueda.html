@@ -1,0 +1,121 @@
+{% extends 'core/base.html' %} {% load static %} {% block title %}Inicio{% endblock %} {% block content %}
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <!-- Slick -->
+    <link type="text/css" rel="stylesheet" href="{% static 'catalogoG/css/slick.css' %}" />
+    <link type="text/css" rel="stylesheet" href="{% static 'catalogoG/css/slick-theme.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,400i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+    <!-- Estilos -->
+    <link href="{% static 'core/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'core/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+    <!-- nouislider -->
+    <link type="text/css" rel="stylesheet" href="{% static 'catalogoG/css/nouislider.min.css' %}" />
+
+    <!-- Font Awesome Icon -->
+    <link rel="stylesheet" href="{% static 'catalogoG/css/font-awesome.min.css' %}">
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="{% static 'catalogoG/css/style.css' %}" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="titleDiv">
+              <h1 class="welcome_text">RESULTADO DE LA BUSQUEDA :</h1>
+        </div>
+        {% if not catalogo_General %}
+        <div class="titleDiv">
+              <h1 class="welcome_text">No se encontro</h1>
+        </div>
+        {% endif %}
+
+    </div>
+    <!-- SECTION -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <!-- /ASIDE -->
+            
+                <!-- STORE -->
+                <div id="store" class="col-md-11">
+                    <!-- store top filter -->
+                    
+                    <!-- /store top filter -->
+
+                    <!-- store products -->
+                    <div class="row">
+                        <!-- product -->
+
+
+
+                        {% for Videojuegos in catalogo_General %}
+                        <!-- product -->
+                        <div class="col-md-4 col-xs-5">
+                            <div class="product">
+                                <div class="product-img">
+                                    <img src="{{Videojuegos.image.url}}" alt="">
+                                </div>
+                                <div class="product-body">
+                                    <p class="product-category">{% if Videojuegos.votacion__valor_votacion__avg == none %} No Calificada {% else %}{{Videojuegos.votacion__valor_votacion__avg}}{% endif %}</p>
+                                    <h3 class="product-name"><a href="#">{{Videojuegos.title}}</a></h3>
+
+                                    <div class="product-rating">
+                                    </div>
+                                    <div class="product-btns">
+                                        <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">realizar trueque</span></button>
+                                        <button name="videojuego" onclick="location.href='{% url 'detalles' Videojuegos.id %}'" class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">vista detallada</span></button>
+                                    </div>
+                                </div>
+                
+                            </div>
+
+                        </div>
+                        {% endfor %}
+                        <!-- /product -->
+                    </div>
+
+                </div>
+                <!-- /STORE -->
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+
+    </div>
+
+
+    <!-- jQuery Plugins -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="{% static 'catalogoG/js/jquery.min.js' %}"></script>
+    <script src="{% static 'catalogoG/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'catalogoG/js/slick.min.js' %}"></script>
+    <script src="{% static 'catalogoG/js/nouislider.min.js' %}"></script>
+    <script src="{% static 'catalogoG/js/jquery.zoom.min.js' %}"></script>
+    <script src="{% static 'catalogoG/js/main.js' %}"></script>
+
+</body>
+
+</html>
+ {% endblock %}

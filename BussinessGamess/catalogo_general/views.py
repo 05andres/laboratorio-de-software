@@ -23,19 +23,17 @@ from django.db.models import Avg
 class catalogo_General(ListView):
     template_name = 'catalogo_general/general.html'
     model = Videojuegos
-    context_object_name = 'catalogo_General'
-    form_class = SearchForm
+    context_object_name = 'catalogo_General'  
 
     def get_queryset(self):
-        form = self.form_class(self.request.GET)
-        if form.is_valid():
-            return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=form.cleaned_data['nombre'])
-        return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
+        return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))  
 
 class detalles_videojuegos(DetailView):
     template_name = 'catalogo_general/detalles.html'
     model = Videojuegos
     context_object_name = 'videojuego'
+
+    
 
 def lista_comentarios(request):
     if request.method == 'GET':
@@ -102,6 +100,21 @@ def busqueda(request):
         query=serialize('json',query_busqueda)
         print(query)
         return JsonResponse(query,safe=False)
+    
+class catalogo_busqueda(ListView):
+    template_name = 'catalogo_general/busqueda.html'
+    model = Videojuegos
+    context_object_name = 'catalogo_General'
+    form_class = SearchForm
+
+    def get_queryset(self):
+        form = self.form_class(self.request.GET)
+        busqueda=Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
+        print(busqueda.count())
+        if form.is_valid():
+            return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=form.cleaned_data['nombre'])
+        return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
+
 
 
 

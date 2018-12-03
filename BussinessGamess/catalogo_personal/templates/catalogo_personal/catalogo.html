@@ -46,9 +46,11 @@
         </span> {% for Videojuegos in catalogo %}
         <div class="container">
             <div class="row justify-content-center my-5 py-2 no-gutters">
+            <a href="{% url 'detallespersonal' Videojuegos.id %}">
                 <div class=" col-sm-3 col-md-3 border border-primary rounded solid-3 align-self-center">
                     <img class="img-fluid " src="{{Videojuegos.image.url}}" alt="">
                 </div>
+            </a>
 
                 <div class="form-group col-6">
                     <form>

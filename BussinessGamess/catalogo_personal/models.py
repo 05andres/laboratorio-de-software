@@ -15,6 +15,8 @@ class Videojuegos(models.Model):
     image = models.ImageField(verbose_name="Imagen", upload_to ="image_juegos", height_field=None, width_field=None)
     duracionPromedio = models.CharField(max_length = 200,verbose_name="Duracion Promedio del videojuego")
     created = models.DateTimeField(auto_now_add=True,verbose_name="Fecha de creación",blank=True,null=True)
+    Descuento = models.IntegerField(blank=True,null=True)
+
 
     class Meta:
         verbose_name = "videojuego"
