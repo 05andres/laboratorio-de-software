@@ -40,10 +40,11 @@
 
 
     <div class="container ">
-
-        <br><span class="login100-form-title p-b-70">
-            CATALOGO PERSONAL
-        </span> {% for Videojuegos in catalogo %}
+            <div class="titleDiv">
+	         <img class="logo_login" src="{% static 'pacho/assets/bg_logo.png' %}">
+	    		 <h1 class="welcome_text">CATALAGO PERSONAL</h1>
+          </div>
+        {% for Videojuegos in catalogo %}
         <div class="container">
             <div class="row justify-content-center my-5 py-2 no-gutters">
             <a href="{% url 'detallespersonal' Videojuegos.id %}">
@@ -96,6 +97,7 @@
 
 
     <!--############## Finaliza el contenido ###############-->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="{% static 'shasa/js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'shasa/js/popper.min.js' %}"></script>
     <script src="{% static 'shasa/js/bootstrap.min.js' %}"></script>
