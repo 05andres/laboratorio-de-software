@@ -7,6 +7,7 @@
     <meta http-equiv="x-ua-compatible" content="ie-edge">
     <link rel="stylesheet" type="text/css" href="{% static 'shasa/css/bootstrap.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'and/css/main.css' %}">
+
     <style type="text/css"></style>
     <style>
         .conten-imagen {
@@ -47,11 +48,12 @@
         {% for Videojuegos in catalogo %}
         <div class="container">
             <div class="row justify-content-center my-5 py-2 no-gutters">
-            <a href="{% url 'detallespersonal' Videojuegos.id %}">
-                <div class=" col-sm-3 col-md-3 border border-primary rounded solid-3 align-self-center">
-                    <img class="img-fluid " src="{{Videojuegos.image.url}}" alt="">
-                </div>
-            </a>
+            <div class=" col-sm-3 col-md-3 border border-primary rounded solid-3 align-self-center">
+                <a href="{% url 'detallespersonal' Videojuegos.id %}">
+                <img class="img-fluid " src="{{Videojuegos.image.url}}" alt="">
+                </a>
+            </div>
+            
 
                 <div class="form-group col-6">
                     <form>
@@ -101,6 +103,7 @@
     <script src="{% static 'shasa/js/jquery-3.3.1.slim.min.js' %}"></script>
     <script src="{% static 'shasa/js/popper.min.js' %}"></script>
     <script src="{% static 'shasa/js/bootstrap.min.js' %}"></script>
+
 </body>
 
 </html>
