@@ -54,6 +54,9 @@
                     <p class="parrafoSinopsis">
                     {{ videojuego.sinopsis }}
                     </p>
+                    <form method="post" action="">
+                    <button type="button" id="botoncompra" class="btn btn-danger btn-lg" onclick="comprar()" id_user2="{{ videojuego.owner }}" video="{{ videojuego.title }}">Comprar</button>
+                    </form>
                   </div>
                 </div>  
               </div>  

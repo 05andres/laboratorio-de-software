@@ -1,6 +1,5 @@
 $(document).ready(function() {
     var data = $("#formulario").attr("id_co");
-    console.log(data)
     actualizar();
 
     function actualizar() {
@@ -43,3 +42,57 @@ $(document).ready(function() {
             });
     };
 });
+
+function comprar() {
+    var user = $("#botoncompra").attr("id_user2");
+    var videojuego = $("#botoncompra").attr("video");
+    var video = videojuego.split(" ")
+    console.log(user, videojuego);
+    var csrftoken = getCookie('csrftoken');
+    $.ajax({
+            type: "post",
+            url: "/venta/",
+            data: {
+                usuario: user,
+                video: videojuego,
+                csrfmiddlewaretoken: csrftoken,
+
+            },
+            beforeSend: function(xhr, settings) {
+                if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                    xhr.setRequestHeader("X-CSRFToken", csrftoken);
+                }
+            },
+            dataType: 'json',
+            cache: false,
+            //success: function(data) {
+            //console.log(data)}
+
+        })
+        .done(function(response) {
+            alert(response.mensaje)
+        });
+
+};
+
+
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = jQuery.trim(cookies[i]);
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}

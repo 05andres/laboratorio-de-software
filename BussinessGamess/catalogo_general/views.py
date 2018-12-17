@@ -12,12 +12,14 @@ from .forms import ComentariosForm,SearchForm
 from django.contrib import messages
 from django.http import JsonResponse
 from django.core import serializers
-from .models import Comentarios,votacion
+from .models import Comentarios,votacion,NotificacionesVentas
 from catalogo_personal.models import Videojuegos
 from django.core.serializers import serialize
 from django.db.models import F,Q
 from django.contrib.auth.models import User
 from django.db.models import Avg
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 class catalogo_General(ListView):
@@ -39,9 +41,7 @@ def lista_comentarios(request):
     if request.method == 'GET':
         co_id = request.GET['co_id']
         comentarios = Comentarios.objects.filter(videojuego=co_id).select_related('owner')
-        print (comentarios)
         data=serialize('json',comentarios)
-        print(data)
         '''
         import json
         jsonToPython = json.loads(data)
@@ -58,12 +58,10 @@ def lista_comentarios(request):
 def comentarBDD(request): 
     data={}    
     if request.method == 'POST' :
-            print ("hola mundo")
             comentario=request.POST['comentario']
             videojuego=Videojuegos.objects.get(id = request.POST['videojuego'])
             owner = request.user
             nombre_owner= request.user.username
-            print (videojuego)
             comment=Comentarios(owner=owner,videojuego=videojuego,text=comentario,owner_username=nombre_owner)
             comment.save()
             data['nombre']= nombre_owner
@@ -79,7 +77,6 @@ def Votacion(request):
         if request.user.is_authenticated:
             voto=request.POST['voto']
             Video=request.POST['videojuego']
-            print(voto,Video)
             videogame=Videojuegos.objects.get(id = request.POST['videojuego'])
             votado=votacion.objects.create(videojuego=videogame,valor_votacion=voto)
             '''p = Videojuegos.objects.get(id=videogame) 
@@ -95,10 +92,8 @@ def Votacion(request):
 def busqueda(request):
     if request.is_ajax():
         dato=request.GET['busqueda']
-        print (dato)
         query_busqueda=Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=dato)
         query=serialize('json',query_busqueda)
-        print(query)
         return JsonResponse(query,safe=False)
     
 class catalogo_busqueda(ListView):
@@ -110,10 +105,32 @@ class catalogo_busqueda(ListView):
     def get_queryset(self):
         form = self.form_class(self.request.GET)
         busqueda=Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
-        print(busqueda.count())
         if form.is_valid():
             return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion')).filter(title__icontains=form.cleaned_data['nombre'])
         return Videojuegos.objects.only('title','image','categoria','id').annotate(Avg('votacion__valor_votacion'))
+
+def venta(request):
+    print("hola")
+    datas={}
+    if request.method == "POST":
+        print("no entra aqui")
+        if request.user.is_authenticated:
+            user1=request.user
+            user2=request.POST['usuario']
+            video=request.POST['video']
+            existe=NotificacionesVentas.objects.filter(user1=user1,user2=user2,videojuego=video)
+            if not existe:
+                print(user1,user2,video)
+                Notificacion=NotificacionesVentas.objects.create(user1=user1,user2=user2,videojuego=video)
+                '''p = Videojuegos.objects.get(id=videogame) 
+                stars_average = p.rating_set.aggregate(Avg('valor_votacion')).values()[0]'''
+                datas['mensaje']="Solicitud Enviada"
+            else:
+                datas['mensaje']="ya enviaste la solicitud"
+            
+        else:
+            datas['mensaje']="Debes iniciar sesión para acceder a este recurso"
+    return JsonResponse(datas,safe=False)
 
 
 

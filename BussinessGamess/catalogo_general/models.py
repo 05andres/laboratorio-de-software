@@ -35,3 +35,15 @@ class votacion(models.Model):
         return reverse('Videojuegos:votaciones', kwargs={'pk': self.pk})
 
 
+class NotificacionesVentas(models.Model):
+    user1 = models.TextField()
+    user2 = models.TextField()
+    created = models.DateField(auto_now_add=True,verbose_name="Fecha de creación",blank=True,null=True)
+    estado= models.IntegerField(null=True)#1 aceptado 0 negado
+    videojuego= models.TextField() #1 venta 0 trueque
+    class Meta:
+        verbose_name = "notificacion"
+        verbose_name_plural = "notificaciones"
+        ordering = ["created"]
+
+

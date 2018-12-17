@@ -6,9 +6,9 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)    
-    telefono = models.IntegerField(verbose_name="Número de Contacto")
+    telefono = models.TextField(verbose_name="Número de Contacto")
     FechaNacimiento= models.DateField( verbose_name="Fecha de Nacimiento")
-    dni = models.IntegerField(verbose_name="Dni")
+    dni = models.TextField(verbose_name="Dni")
     
     def __str__(self): 
         return self.usuario.username
